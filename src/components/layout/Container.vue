@@ -18,7 +18,12 @@ export default {
   	},
   	components: {
   		Article
-  	}
+  	},
+    computed: {
+        articleList () {
+            return this.$store.state.article;
+        }
+    }
 }
 </script>
 
@@ -31,8 +36,13 @@ export default {
     justify-content: space-between;
     position: relative;
 }
+@media (max-width: 1000px){
+    .contentLeft{
+        width: 100%!important;
+    }
+}
 .contentLeft{
-	width: 37%;
+	width: 67%;
 	float: left;
 	margin-top: -90px;
 	transition: all .5s ease-out;

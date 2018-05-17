@@ -1,11 +1,15 @@
 <template>
   	<div>
-  		<h1>{{msg}}</h1>
+  	    <articleList></articleList>
   	</div>
 </template>
 
 <script>
+import articleList from '@/components/layout/articleList'
 export default {
+    components: {
+        articleList
+    },
   	data () {
 	    return {
 
@@ -13,7 +17,7 @@ export default {
   	},
   	computed: {
   		msg () {
-  			return this.$store.state.msg;
+  			return this.$store.state.article;
   		}
   	}
 }
