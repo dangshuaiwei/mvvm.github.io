@@ -23,6 +23,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
+    //后缀为下列这些的文件在调用的时候就不需要加后缀
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
@@ -64,6 +65,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: '\.md$/',
+        loader: 'vue-markdown-loader'
       }
     ]
   },
