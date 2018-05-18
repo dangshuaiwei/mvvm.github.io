@@ -8,7 +8,8 @@ const { readFileSync, writeFileSync } = require('fs')
 
 const articleInfoObj = {}
 const routes = [
-  
+  "{ path: '/', component: resolve => require(['~pages/list'], resolve) }",
+  "{ path: '*', component: resolve => require(['~pages/404'], resolve) }"
 ]
 
 function getArticleInfo (path) {
