@@ -3,7 +3,20 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+// 问题
+const markdown = require('markdown-it')({
+  highlight (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return '<pre class="hljs"><code>' +
+               hljs.highlight(lang, str, true).value +
+               '</code></pre>';
+      } catch (__) {}
+    }
 
+    return '<pre class="hljs"><code>' + markdown.utils.escapeHtml(str) + '</code></pre>';
+  }
+})
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -65,6 +78,11 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.md$/,
+        loader: 'vue-markdown-loader',
+        options: markdown
       }
     ]
   },
