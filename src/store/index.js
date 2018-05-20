@@ -5,20 +5,61 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
-		article: [
-			{
-				title: 'jQuery源码分析',
-				des: 'jQuery最基本的构成结构：'
-			},
-			{
-				title: 'css垂直居中总结',
-				des: '子元素垂直居中的两种实现，效果叠加实现标签效果。'
-			},
-			{
-				title: '自定义滚动条样式',
-				des: 'webkit支持拥有overflow属性的区域，列表框，下拉菜单，textarea的滚动条自定义样式'
-			}
-		]
+		allArticles: [],
+		showArticles: [],
+		tags: [],
+		selectedTag: []
+	},
+	mutations: {
+		getAllArticles (state,allArticles) {
+			state.allArticles = allArticles;
+		},
+		getShowArticles (state,showArticles) {
+			state.showArticles = showArticles
+		},
+		getTags (state,tags) {
+			state.tags = tags;
+		},
+		getSelectedArticles (state,selectedTag) {
+			state.selectedTag = selectedTag;
+		}
+	},
+	actions: {
+		getAllArticles ({commit}) {
+			const articles = require('~articles/articles.json')
+			console.log(articles)
+			const articlesArr = Object.keys(articles).map((name) => {
+				return {
+					name: name,
+					title: articles[name].title,
+					tags: articles[name].tags,
+					date: articles[name].date,
+					cover: articles[name].cover,
+					desc: articles[name].desc
+
+				}
+			})
+			commit('getAllArticles', articlesArr)
+      		commit('getShowArticles', articlesArr)
+      		const tagsSet = new Set()
+      		articlesArr.forEach(({ tags }) => {
+        		tags.forEach((tag) => {
+          		tagsSet.add(tag)
+        		})
+      		})
+     		commit('getTags', [...tagsSet])
+		}
+	},
+	getters: {
+		showArticles (state) {
+			return state.showArticles;
+		},
+		tags (state) {
+			return state.tags;
+		},
+		selectedTag (state) {
+			return state.tags;
+		}
 	}
 })
 

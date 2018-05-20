@@ -1,13 +1,13 @@
 <template>
   	<div>
-  		<div v-for="item in articleList" class="everyArticle">
+  		<div v-for="(item,key) in showArticles" class="everyArticle" @click="$router.push(`/${showArticles[key].name.replace(/\.md/, '')}`)">
   			<h2 class="title">{{item.title}}</h2>
-	  		<p class="articleTime">12:00</p>
+	  		<p class="articleTime">{{item.date}}</p>
 	  		<div class="leftIcon">
-	  			<a href="javascript:void(0)">js</a>
+	  			<a href="javascript:void(0)">{{item.tags}}</a>
 	  		</div>
 	  		<div class="articleCon">
-	  			<h3 class="conTitle">item.des</h3>
+	  			<h3 class="conTitle">{{item.desc}}</h3>
 				<p class="des"></p>
 	  		</div>
 	  		<a href="javascript:void(0)" class="more">阅读更多</a>
@@ -16,16 +16,20 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   	data () {
 	    return {
 	    }
   	},
-  	computed: {
-  		articleList () {
-  			return this.$store.state.article;
-  		}
-  	}
+  	mounted () {
+        this.$store.dispatch('getAllArticles');
+    },
+    computed: {
+        ...mapGetters([
+            'showArticles'
+        ])
+    }
 }
 </script>
 

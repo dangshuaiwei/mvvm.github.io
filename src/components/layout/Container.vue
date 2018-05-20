@@ -18,12 +18,7 @@ export default {
   	},
   	components: {
   		Article
-  	},
-    computed: {
-        articleList () {
-            return this.$store.state.article;
-        }
-    }
+  	}
 }
 </script>
 

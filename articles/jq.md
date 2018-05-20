@@ -6,4 +6,4 @@
     "cover": "markcook.png"
 }
  
-#JQ
+JQ

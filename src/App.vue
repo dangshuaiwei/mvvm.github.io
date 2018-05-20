@@ -31,4 +31,7 @@ ul,li{
   text-align: center;
   color: #2c3e50;
 }
+p:first-child{
+  display: none;
+}
 </style>
