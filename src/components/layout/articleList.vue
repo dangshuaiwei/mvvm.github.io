@@ -1,16 +1,17 @@
 <template>
   	<div>
-  		<div v-for="(item,key) in showArticles" class="everyArticle" @click="$router.push(`/${showArticles[key].name.replace(/\.md/, '')}`)">
+  		<div v-for="(item,key) in showArticles" :key="key" class="everyArticle">
   			<h2 class="title">{{item.title}}</h2>
 	  		<p class="articleTime">{{item.date}}</p>
 	  		<div class="leftIcon">
-	  			<a href="javascript:void(0)">{{item.tags}}</a>
+	  			<a href="javascript:void(0)" v-for="tag in item.tags">{{tag}}</a>
 	  		</div>
 	  		<div class="articleCon">
 	  			<h3 class="conTitle">{{item.desc}}</h3>
 				<p class="des"></p>
 	  		</div>
-	  		<a href="javascript:void(0)" class="more">阅读更多</a>
+        <router-link :to="`/${showArticles[key].name.replace(/\.md/, '')}`" class="more">阅读更多</router-link>
+	  		<!-- <a href="javascript:void(0)" class="more" @click="$router.push(`/${showArticles[key].name.replace(/\.md/, '')}`)">阅读更多</a> -->
   		</div>
   	</div>
 </template>
@@ -23,7 +24,7 @@ export default {
 	    }
   	},
   	mounted () {
-        this.$store.dispatch('getAllArticles');
+        this.$store.dispatch('getAllArticles'); 
     },
     computed: {
         ...mapGetters([

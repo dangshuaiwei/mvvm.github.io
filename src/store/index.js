@@ -27,7 +27,6 @@ const store = new Vuex.Store({
 	actions: {
 		getAllArticles ({commit}) {
 			const articles = require('~articles/articles.json')
-			console.log(articles)
 			const articlesArr = Object.keys(articles).map((name) => {
 				return {
 					name: name,

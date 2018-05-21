@@ -2,7 +2,7 @@
   	<div class="content">
   		<div class="contentLeft">
   			<div class="articleList">
-  				<Article></Article>
+  				<articleList></articleList>
   			</div>
   		</div>
   		<div class="contentRight"></div>
@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import Article from '@/components/layout/Article' 
+import articleList from '@/components/layout/articleList' 
 export default {
   	data () {
 	    return {
 	    }
   	},
   	components: {
-  		Article
+  		articleList
   	}
 }
 </script>

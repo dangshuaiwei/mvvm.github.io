@@ -5,8 +5,7 @@ import Blog from '@/components/Blog'
 import articlesInfo from '~articles/articles.json'
 
 const routes = [
-  { path: '/', component: () => import('@/components/Index') },
-  { path: '/Blog', component: () => import('@/components/Blog') },
+  { path: '/Index', component: () => import('@/components/Index') },
 ]
 
 Object.keys(articlesInfo).forEach((key) => {
@@ -15,7 +14,6 @@ Object.keys(articlesInfo).forEach((key) => {
     component: () => import(`~articles/${key}`)
   })
 })
-
 
 
 Vue.use(Router)

@@ -4,9 +4,9 @@
   		<div class="headerPic">
   			<h1>Chunibyo</h1>
   		</div>
-        <div>
-            <Container></Container>
-        </div>
+      <div>
+          <Container></Container>
+      </div>
   	</div>
     
 </template>
@@ -21,7 +21,7 @@ export default {
   	},
   	components: {
   		Header,
-        Container
+      Container
   	}
 }
 </script>
