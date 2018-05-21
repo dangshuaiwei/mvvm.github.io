@@ -1,9 +1,7 @@
 <template>
   	<div class="content">
   		<div class="contentLeft">
-  			<div class="articleList">
-  				<articleList></articleList>
-  			</div>
+  			<articleList></articleList>
   		</div>
   		<div class="contentRight"></div>
   	</div>
@@ -46,7 +44,7 @@ export default {
 	width: 30%;
 	float: right;
 }
-.contentLeft .articleList{
+.contentLeft>div{
 	padding: 20px;
 	background: #fff;
 	border-radius: 10px;

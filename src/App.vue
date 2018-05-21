@@ -1,24 +1,21 @@
 <template>
     <div id="app">
+        <div class="header"><Header></Header></div>
         <div class="headerPic">
             <h1>Chunibyo</h1>
         </div>
-    <div>
-        <Container>
+        <div class="ooo">
             <router-view></router-view>
-        </Container>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
 import Header from '@/components/layout/Header'
-import Container from '@/components/layout/Container'
 export default {
     name: 'App',
     components: {
-        Header,
-        Container
+        Header    
     }
 }
 </script>

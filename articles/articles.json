@@ -1,14 +1,4 @@
 {
-  "jq.md": {
-    "title": "JQ",
-    "tags": [
-      "javascript",
-      "vue"
-    ],
-    "date": "2018-05-18",
-    "desc": "jQuery is a fast, small, and feature-rich JavaScript library.",
-    "cover": "markcook.png"
-  },
   "css.md": {
     "title": "CSS",
     "tags": [
@@ -16,6 +6,16 @@
     ],
     "date": "2018-05-18",
     "desc": "CSS is a fast, small, and feature-rich JavaScript library.",
+    "cover": "markcook.png"
+  },
+  "jq.md": {
+    "title": "JQ",
+    "tags": [
+      "JS",
+      "Vue"
+    ],
+    "date": "2018-05-18",
+    "desc": "jQuery is a fast, small, and feature-rich JavaScript library.",
     "cover": "markcook.png"
   },
   "vue.md": {
@@ -26,6 +26,16 @@
     ],
     "date": "2018-05-18",
     "desc": "VUE is a fast, small, and feature-rich JavaScript library.",
+    "cover": "markcook.png"
+  },
+  "markdown.md": {
+    "title": "Markdown",
+    "tags": [
+      "Markdown",
+      "Vue"
+    ],
+    "date": "2018-05-21",
+    "desc": "Markdown 是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式",
     "cover": "markcook.png"
   }
 }

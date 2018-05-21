@@ -6,4 +6,3 @@
     "cover": "markcook.png"
 }
  
-css

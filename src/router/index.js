@@ -5,6 +5,7 @@ import Blog from '@/components/Blog'
 import articlesInfo from '~articles/articles.json'
 
 const routes = [
+  { path: '/', component: () => import('@/components/layout/Container') },
   { path: '/Index', component: () => import('@/components/Index') },
 ]
 
