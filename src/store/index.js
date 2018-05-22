@@ -8,7 +8,8 @@ const store = new Vuex.Store({
 		allArticles: [],
 		showArticles: [],
 		tags: [],
-		selectedTag: []
+		selectedTag: [],
+		detialStyle: false
 	},
 	mutations: {
 		getAllArticles (state,allArticles) {
@@ -22,6 +23,9 @@ const store = new Vuex.Store({
 		},
 		getSelectedArticles (state,selectedTag) {
 			state.selectedTag = selectedTag;
+		},
+		clickDetial1 (state) {
+			state.detialStyle = true;
 		}
 	},
 	actions: {
@@ -47,7 +51,22 @@ const store = new Vuex.Store({
         		})
       		})
      		commit('getTags', [...tagsSet])
-		}
+		},
+		clickDetial1 (context) {
+			context.commit('clickDetial1')
+		},
+		selectTag ({ state, commit }, tag) {
+			if (tag) {
+				const tagArticles = state.allArticles.filter(({ tags }) => {
+			  		return tags.includes(tag)
+				})
+				commit('showArticles', tagArticles)
+				commit('selectedTag', tag)
+			} else {
+				commit('showArticles', state.allArticles)
+				commit('selectedTag', 'all')
+			}
+	    }
 	},
 	getters: {
 		showArticles (state) {
@@ -58,6 +77,9 @@ const store = new Vuex.Store({
 		},
 		selectedTag (state) {
 			return state.tags;
+		},
+		clickDetial (state) {
+			return state.detialStyle;
 		}
 	}
 })

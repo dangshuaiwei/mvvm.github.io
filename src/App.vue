@@ -4,7 +4,7 @@
         <div class="headerPic">
             <h1>Chunibyo</h1>
         </div>
-        <div class="ooo">
+        <div class="view">
             <router-view></router-view>
         </div>
     </div>
@@ -12,10 +12,21 @@
 
 <script>
 import Header from '@/components/layout/Header'
+import {mapGetters} from 'vuex'
 export default {
     name: 'App',
+    data () {
+        return {
+            
+        }
+    },
     components: {
         Header    
+    },
+    computed: {
+        ...mapGetters([
+            'clickDetial'
+        ])
     }
 }
 </script>
@@ -70,5 +81,17 @@ p:first-child{
     font-size: 66px;
     margin: 0 auto;
     margin-top: 100px;
+}
+.view section{
+    width: 67%;
+    margin: 0 auto;
+    margin-top: -90px;
+    transition: all .5s ease-out;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 16px 24px 1px rgba(0,0,0,.14), 0 6px 50px 1px rgba(0,0,0,.12), 0 6px 10px -5px rgba(0,0,0,.2);
+    box-shadow: 0 16px 24px 1px rgba(0,0,0,.14), 0 6px 50px 1px rgba(0,0,0,.12), 0 6px 10px -5px rgba(0,0,0,.2);
+    position: relative;
 }
 </style>

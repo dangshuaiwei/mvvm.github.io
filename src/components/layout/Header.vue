@@ -4,8 +4,8 @@
   			<li v-for="item in nav">
   				<router-link :to="item.path" :method="[item.hoverMethod ? 'hoverMethod' : '']"><span class="iconfont" :class="item.iconClass"></span>{{item.name}}</router-link>
   				<ul v-if="item.hoverMethod" class="classfication">
-  					<li v-for="val in item.classfication">
-  						<a href="javascript:void(0)">{{val}}</a>
+  					<li v-for="val in tags">
+  						<a href="javascript:void(0)" @click="selectTag(val)">{{val}}</a>
   					</li>
   				</ul>
   			</li>
@@ -14,19 +14,21 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+import {mapActions} from 'vuex'
 export default {
   	data () {
 	    return {
 	    	nav: [
 	    		{
 	    			name: '首页',
-	    			path: '/Blog',
+	    			path: '/',
 	    			hoverMethod: false,
 	    			iconClass: 'icon-shouye'
 	    		},
 	    		{
 	    			name: '分类',
-	    			path: '/Blog',
+	    			path: '/',
 	    			hoverMethod: true,
 	    			classfication: ['杂谈','Scss','js'],
 	    			iconClass: 'icon-fenleigongnengleimu'
@@ -44,6 +46,19 @@ export default {
 	    			iconClass: 'icon-guanyuwo'
 	    		}
 	    	]
+	    }
+  	},
+  	computed: {
+  		...mapGetters([
+            'tags'
+        ]),
+        ...mapGetters([
+            'selectedTag'
+        ]),
+  	},
+  	methods: {
+  		selectTag (tag) {
+	      	this.$store.dispatch('selectTag', tag)
 	    }
   	}
 }

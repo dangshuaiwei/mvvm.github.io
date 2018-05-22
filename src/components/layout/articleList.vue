@@ -10,25 +10,35 @@
 	  			<h3 class="conTitle">{{item.desc}}</h3>
 				<p class="des"></p>
 	  		</div>
-            <router-link :to="`/${showArticles[key].name.replace(/\.md/, '')}`" class="more">阅读更多</router-link>
-	  		<!-- <a href="javascript:void(0)" class="more" @click="$router.push(`/${showArticles[key].name.replace(/\.md/, '')}`)">阅读更多</a> -->
+            <!-- <router-link :to="`/${showArticles[key].name.replace(/\.md/, '')}`" @click="clickDetial1" class="more">阅读更多</router-link> -->
+	  		<a href="javascript:void(0)" class="more" @click="clickDetial1();$router.push(`/${showArticles[key].name.replace(/\.md/, '')}`)">阅读更多</a>
   		</div>
   	</div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
+import {mapActions} from 'vuex'
 export default {
   	data () {
 	    return {
+            
 	    }
   	},
   	mounted () {
         this.$store.dispatch('getAllArticles'); 
     },
+    methods: {
+        ...mapActions([
+            'clickDetial1'
+        ])
+    }, 
     computed: {
         ...mapGetters([
             'showArticles'
+        ]),
+        ...mapGetters([
+            'clickDetial'
         ])
     }
 }
