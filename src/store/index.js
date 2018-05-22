@@ -21,7 +21,7 @@ const store = new Vuex.Store({
 		getTags (state,tags) {
 			state.tags = tags;
 		},
-		getSelectedArticles (state,selectedTag) {
+		getSelectedTags (state,selectedTag) {
 			state.selectedTag = selectedTag;
 		},
 		clickDetial1 (state) {
@@ -60,11 +60,13 @@ const store = new Vuex.Store({
 				const tagArticles = state.allArticles.filter(({ tags }) => {
 			  		return tags.includes(tag)
 				})
-				commit('showArticles', tagArticles)
-				commit('selectedTag', tag)
+				console.log(tagArticles)
+				commit('getShowArticles', tagArticles)
+				console.log(state.showArticles)
+				commit('getSelectedTags', tag)
 			} else {
-				commit('showArticles', state.allArticles)
-				commit('selectedTag', 'all')
+				commit('getShowArticles', state.allArticles)
+				commit('getSelectedTags', 'all')
 			}
 	    }
 	},

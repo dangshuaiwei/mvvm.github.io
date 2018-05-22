@@ -7,6 +7,9 @@
   					<li v-for="val in tags">
   						<a href="javascript:void(0)" @click="selectTag(val)">{{val}}</a>
   					</li>
+  					<li>
+  						<a href="javascript:void(0)" @click="selectTag(false)">All</a>
+  					</li>
   				</ul>
   			</li>
   		</ul>

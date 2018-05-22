@@ -1,32 +1,51 @@
 <template>
     <div id="app">
-        <div class="header"><Header></Header></div>
+        <transition name="headerFade">
+            <div class="header" v-show="headerShow"><Header></Header></div>
+        </transition>
         <div class="headerPic">
             <h1>Chunibyo</h1>
         </div>
         <div class="view">
             <router-view></router-view>
         </div>
+        <div class="backTop"><backTop :scrollTop = "scrollTop" v-show="backTopShow"></backTop></div>
     </div>
 </template>
 
 <script>
 import Header from '@/components/layout/Header'
+import backTop from '@/components/layout/backTop'
 import {mapGetters} from 'vuex'
 export default {
     name: 'App',
     data () {
         return {
-            
+            headerShow: true,
+            scrollTop: 0,
+            backTopShow: false
         }
     },
     components: {
-        Header    
+        Header,
+        backTop   
+    },
+    mounted () {
+        const that = this;
+        window.addEventListener('scroll',(e) => {
+            const bodyScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            that.scrollTop = bodyScroll;
+            that.headerShow = bodyScroll > 0 ? false : true;
+            that.backTopShow = bodyScroll > 100 ? true : false;
+        })
     },
     computed: {
         ...mapGetters([
             'clickDetial'
         ])
+    },
+    methods: {
+        
     }
 }
 </script>
@@ -63,6 +82,16 @@ p:first-child{
     z-index: 3;
     background: rgba(0,0,0,0.4);
 }
+/*顶部动效*/
+.headerFade-enter-active, .headerFade-leave-active{
+    transition: top 1s
+}
+.headerFade-enter{
+    top: 0px;
+}
+.headerFade-leave-to{
+    top: -38px;
+}
 .headerPic{
     height: 280px;
     background: url(/static/images/xiyang.gif) center -52px no-repeat;
@@ -93,5 +122,10 @@ p:first-child{
     -webkit-box-shadow: 0 16px 24px 1px rgba(0,0,0,.14), 0 6px 50px 1px rgba(0,0,0,.12), 0 6px 10px -5px rgba(0,0,0,.2);
     box-shadow: 0 16px 24px 1px rgba(0,0,0,.14), 0 6px 50px 1px rgba(0,0,0,.12), 0 6px 10px -5px rgba(0,0,0,.2);
     position: relative;
+}
+.backTop{
+    position: fixed;
+    right: 100px;
+    bottom: 100px;
 }
 </style>
