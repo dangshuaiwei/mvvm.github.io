@@ -5,6 +5,8 @@
   		</div>
   		<div class="contentRight">
             <self></self>  
+            <leaveMessage></leaveMessage>
+            <tags></tags>
       </div>
   	</div>
 </template>
@@ -12,6 +14,8 @@
 <script>
 import articleList from '@/components/layout/articleList' 
 import self from '@/components/layout/self' 
+import leaveMessage from '@/components/layout/leaveMessage' 
+import tags from '@/components/layout/tags' 
 export default {
   	data () {
 	    return {
@@ -19,7 +23,9 @@ export default {
   	},
   	components: {
   		articleList,
-      self
+        self,
+        leaveMessage,
+        tags
   	}
 }
 </script>

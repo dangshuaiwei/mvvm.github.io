@@ -7,10 +7,10 @@
   				<a href="javascript:void(0)"><img src="/static/images/img.jpg"></a>
   			</div>
   			<div class="link">
-  				<a href=""></a>
-  				<a href=""></a>
-  				<a href=""></a>
-  				<a href=""></a>
+  				<a href=""><i class="iconfont icon-tubiao214"></i></a>
+  				<a href=""><i class="iconfont icon-github"></i></a>
+  				<a href=""><i class="iconfont icon-mail"></i></a>
+  				<a href=""><i class="iconfont icon-mingpian"></i></a>
   			</div>
   		</div>
   	</div>
@@ -61,7 +61,28 @@ export default {
 	width: 38px;
 	height: 38px;
 	float: left;
-	background: blue;
 	margin: 7px;
+}
+.contact .link a i{
+    display: inline-block;
+    font-size: 22px;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+}
+.contact .link a:first-child i{
+    background-color: rgb(221, 75, 57);
+}
+.contact .link a:nth-child(2) i{
+    background-color: rgb(85, 172, 238);
+}
+.contact .link a:nth-child(3) i{
+    background-color: rgb(59, 89, 152);
+}
+.contact .link a:nth-child(4) i{
+    background-color: rgb(128, 185, 83);
 }
 </style>

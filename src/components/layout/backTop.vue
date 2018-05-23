@@ -13,15 +13,15 @@ export default {
   	},
   	methods: {
   		backTop (scrollTop) {
-  			const that = this;
+  			// const that = this;箭头函数的this是在函数声明的时候定义的
   			const timer = setInterval(() => {
   				// scrollTop -= 30;
   				scrollTop = scrollTop - scrollTop/10;
   				if(scrollTop <= 10){
-  					that.setTop(0);
+  					this.setTop(0);
 	  				clearInterval(timer);
 	  			}
-  				that.setTop(scrollTop);
+  				this.setTop(scrollTop);
   			},12)
   		},
   		setTop (scrollTop) {

@@ -31,12 +31,14 @@ export default {
         backTop   
     },
     mounted () {
-        const that = this;
+        // const that = this;箭头函数的this是在函数声明的时候定义的
         window.addEventListener('scroll',(e) => {
+            var a = e || window.event;
+            console.log(e.wheelDelta)
             const bodyScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            that.scrollTop = bodyScroll;
-            that.headerShow = bodyScroll > 0 ? false : true;
-            that.backTopShow = bodyScroll > 100 ? true : false;
+            this.scrollTop = bodyScroll;
+            this.headerShow = bodyScroll > 0 ? false : true;
+            this.backTopShow = bodyScroll > 100 ? true : false;
         })
     },
     computed: {
@@ -71,7 +73,7 @@ ul,li{
     text-align: center;
     color: #2c3e50;
 }
-p:first-child{
+section p:first-child{
     display: none;
 }
 .header{
