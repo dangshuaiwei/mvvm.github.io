@@ -1,5 +1,7 @@
 <template>
-  	<div @click="backTop(scrollTop)"></div>
+  	<div @click="backTop(scrollTop)">
+        <i class="iconfont icon-arrow-down"></i>
+    </div>
 </template>
 
 <script>
@@ -38,6 +40,28 @@ export default {
 div{
 	width: 50px;
 	height: 50px;
-	background-color: lightblue;
+    position: relative;
+}
+div i{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    left: 50%;
+    margin-left: -25px;
+    color: rgb(113, 226, 241);
+    font-size: 32px;
+    background-color: hsla(0,7%,91%,.52);
+    border-radius: 5px;
+    transition: border-radius 0.5s;
+}
+.backTop:hover i{
+    border-radius: 50%;
+    background-color: rgb(113, 226, 241);
+    color: #fff;
 }
 </style>

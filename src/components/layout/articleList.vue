@@ -56,6 +56,9 @@ export default {
 	border-bottom: 1px solid #e0e0e0;
 	position: relative;
 }
+.articleCon{
+    margin: 20px 0;
+}
 .time{
 	font-size: 14px;
 	color: #555;line-height: 20px;
@@ -86,5 +89,12 @@ export default {
     border-left: 0 solid transparent;
     width: 0;
     height: 0;
+}
+.more{
+    background-color: #96e1fc;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 </style>

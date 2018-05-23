@@ -95,8 +95,7 @@ p:first-child{
 .headerPic{
     height: 280px;
     background: url(/static/images/xiyang.gif) center -52px no-repeat;
-    bac
-    kground-size: cover;
+    background-size: cover;
     position: relative;
     overflow: hidden;
     margin-bottom: 38px;

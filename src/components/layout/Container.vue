@@ -3,19 +3,23 @@
   		<div class="contentLeft">
   			<articleList></articleList>
   		</div>
-  		<div class="contentRight"></div>
+  		<div class="contentRight">
+            <self></self>  
+      </div>
   	</div>
 </template>
 
 <script>
 import articleList from '@/components/layout/articleList' 
+import self from '@/components/layout/self' 
 export default {
   	data () {
 	    return {
 	    }
   	},
   	components: {
-  		articleList
+  		articleList,
+      self
   	}
 }
 </script>
