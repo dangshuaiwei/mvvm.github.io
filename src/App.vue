@@ -1,55 +1,11 @@
 <template>
     <div id="app">
-        <transition name="headerFade">
-            <div class="header" v-show="headerShow"><Header></Header></div>
-        </transition>
-        <div class="headerPic">
-            <h1>Chunibyo</h1>
-        </div>
-        <div class="view">
-            <router-view></router-view>
-        </div>
-        <div class="backTop"><backTop :scrollTop = "scrollTop" v-show="backTopShow"></backTop></div>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-import Header from '@/components/layout/Header'
-import backTop from '@/components/layout/backTop'
-import {mapGetters} from 'vuex'
-export default {
-    name: 'App',
-    data () {
-        return {
-            headerShow: true,
-            scrollTop: 0,
-            backTopShow: false
-        }
-    },
-    components: {
-        Header,
-        backTop   
-    },
-    mounted () {
-        // const that = this;箭头函数的this是在函数声明的时候定义的
-        window.addEventListener('scroll',(e) => {
-            var a = e || window.event;
-            console.log(e.wheelDelta)
-            const bodyScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            this.scrollTop = bodyScroll;
-            this.headerShow = bodyScroll > 0 ? false : true;
-            this.backTopShow = bodyScroll > 100 ? true : false;
-        })
-    },
-    computed: {
-        ...mapGetters([
-            'clickDetial'
-        ])
-    },
-    methods: {
-        
-    }
-}
+
 </script>
 
 <style>
@@ -86,12 +42,9 @@ section p:first-child{
 }
 /*顶部动效*/
 .headerFade-enter-active, .headerFade-leave-active{
-    transition: top 1s
+    transition: top 1s;
 }
-.headerFade-enter{
-    top: 0px;
-}
-.headerFade-leave-to{
+.headerFade-enter,.headerFade-leave-to{
     top: -38px;
 }
 .headerPic{

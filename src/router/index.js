@@ -5,17 +5,21 @@ import Blog from '@/components/Blog'
 import articlesInfo from '~articles/articles.json'
 
 const routes = [
-  { path: '/', component: () => import('@/components/layout/Container') },
-  { path: '/Index', component: () => import('@/components/Index') },
+	{ path: '/', component: () => import('@/components/Index') },
+	{ path: '/Blog', component: () => import('@/components/Blog'),
+		children:[
+			{ path: '', component: () => import('@/components/layout/Container') }
+		]
+	}
 ]
 
 Object.keys(articlesInfo).forEach((key) => {
-  routes.splice(1, 0, {
-    path: `/${key.replace(/\.md/, '')}`,
-    component: () => import(`~articles/${key}`)
-  })
+  	routes[1].children.splice(1, 0, {
+    	path: `${key.replace(/\.md/, '')}`,
+    	component: () => import(`~articles/${key}`)
+  	})
 })
-
+console.log(routes)
 
 Vue.use(Router)
 

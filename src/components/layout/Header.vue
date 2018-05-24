@@ -5,7 +5,7 @@
   				<router-link :to="item.path" :method="[item.hoverMethod ? 'hoverMethod' : '']"><span class="iconfont" :class="item.iconClass"></span>{{item.name}}</router-link>
   				<ul v-if="item.hoverMethod" class="classfication">
   					<li v-for="val in tags">
-  						<a href="javascript:void(0)" @click="selectTag(val)">{{val}}</a>
+  						<a :href="clickDetial" @click="selectTag(val)">{{val}}</a>
   					</li>
   					<li>
   						<a href="javascript:void(0)" @click="selectTag(false)">All</a>
@@ -57,6 +57,9 @@ export default {
         ]),
         ...mapGetters([
             'selectedTag'
+        ]),
+        ...mapGetters([
+            'clickDetial'
         ]),
   	},
   	methods: {

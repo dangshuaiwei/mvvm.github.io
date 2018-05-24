@@ -9,7 +9,7 @@ const store = new Vuex.Store({
 		showArticles: [],
 		tags: [],
 		selectedTag: [],
-		detialStyle: false
+		backUrl: 'javascript:void(0)'
 	},
 	mutations: {
 		getAllArticles (state,allArticles) {
@@ -24,8 +24,8 @@ const store = new Vuex.Store({
 		getSelectedTags (state,selectedTag) {
 			state.selectedTag = selectedTag;
 		},
-		clickDetial1 (state) {
-			state.detialStyle = true;
+		clickDetial (state) {
+			state.backUrl = '/Blog';
 		}
 	},
 	actions: {
@@ -42,6 +42,7 @@ const store = new Vuex.Store({
 
 				}
 			})
+			console.log(123)
 			commit('getAllArticles', articlesArr)
       		commit('getShowArticles', articlesArr)
       		const tagsSet = new Set()
@@ -52,8 +53,8 @@ const store = new Vuex.Store({
       		})
      		commit('getTags', [...tagsSet])
 		},
-		clickDetial1 (context) {
-			context.commit('clickDetial1')
+		clickDetial (context) {
+			context.commit('clickDetial')
 		},
 		selectTag ({ state, commit }, tag) {
 			if (tag) {
@@ -62,7 +63,6 @@ const store = new Vuex.Store({
 				})
 				console.log(tagArticles)
 				commit('getShowArticles', tagArticles)
-				console.log(state.showArticles)
 				commit('getSelectedTags', tag)
 			} else {
 				commit('getShowArticles', state.allArticles)
@@ -81,7 +81,10 @@ const store = new Vuex.Store({
 			return state.tags;
 		},
 		clickDetial (state) {
-			return state.detialStyle;
+			return state.backUrl;
+		},
+		nowTag (state) {
+			return state.selectedTag;
 		}
 	}
 })

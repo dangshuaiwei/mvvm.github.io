@@ -11,7 +11,7 @@
 				<p class="des"></p>
 	  		</div>
             <!-- <router-link :to="`/${showArticles[key].name.replace(/\.md/, '')}`" @click="clickDetial1" class="more">阅读更多</router-link> -->
-	  		<a href="javascript:void(0)" class="more" @click="clickDetial1();$router.push(`/${showArticles[key].name.replace(/\.md/, '')}`)">阅读更多</a>
+	  		<a href="javascript:void(0)" class="more" @click="clickDetial();$router.push(`/Blog/${showArticles[key].name.replace(/\.md/, '')}`)">阅读更多</a>
   		</div>
   	</div>
 </template>
@@ -26,19 +26,21 @@ export default {
 	    }
   	},
   	mounted () {
-        this.$store.dispatch('getAllArticles'); 
+        console.log(this.$route.query.id)
+        if(!this.$route.query.id){
+            this.onceFlag = false;
+            this.$store.dispatch('getAllArticles'); 
+        }
+        // this.$store.dispatch('selectTag',nowTag); 
     },
     methods: {
         ...mapActions([
-            'clickDetial1'
+            'clickDetial'
         ])
     }, 
     computed: {
         ...mapGetters([
             'showArticles'
-        ]),
-        ...mapGetters([
-            'clickDetial'
         ])
     }
 }

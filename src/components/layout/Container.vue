@@ -43,6 +43,9 @@ export default {
     .contentLeft{
         width: 100%!important;
     }
+    .contentRight{
+        display: none;
+    }
 }
 .contentLeft{
 	width: 67%;
