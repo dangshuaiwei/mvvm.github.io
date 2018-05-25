@@ -26,12 +26,12 @@ export default {
 	    }
   	},
   	mounted () {
-        console.log(this.$route.query.id)
-        if(!this.$route.query.id){
-            this.onceFlag = false;
-            this.$store.dispatch('getAllArticles'); 
-        }
-        // this.$store.dispatch('selectTag',nowTag); 
+        // console.log(this.$route.query.id)
+        if(this.$store.state.selectedTag.length > 0){
+            this.$store.dispatch('selectTag',this.$store.state.selectedTag); 
+        }else{
+            this.$store.dispatch('getAllArticles');
+        } 
     },
     methods: {
         ...mapActions([

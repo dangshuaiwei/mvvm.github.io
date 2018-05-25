@@ -19,7 +19,6 @@ Object.keys(articlesInfo).forEach((key) => {
     	component: () => import(`~articles/${key}`)
   	})
 })
-console.log(routes)
 
 Vue.use(Router)
 

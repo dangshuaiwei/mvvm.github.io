@@ -5,7 +5,7 @@
   				<router-link :to="item.path" :method="[item.hoverMethod ? 'hoverMethod' : '']"><span class="iconfont" :class="item.iconClass"></span>{{item.name}}</router-link>
   				<ul v-if="item.hoverMethod" class="classfication">
   					<li v-for="val in tags">
-  						<a :href="clickDetial" @click="selectTag(val)">{{val}}</a>
+  						<a href="javascript:void(0)" @click="selectTag(val)">{{val}}</a>
   					</li>
   					<li>
   						<a href="javascript:void(0)" @click="selectTag(false)">All</a>
@@ -25,15 +25,14 @@ export default {
 	    	nav: [
 	    		{
 	    			name: '首页',
-	    			path: '/',
+	    			path: '/Blog',
 	    			hoverMethod: false,
 	    			iconClass: 'icon-shouye'
 	    		},
 	    		{
 	    			name: '分类',
-	    			path: '/',
+	    			path: '/Blog',
 	    			hoverMethod: true,
-	    			classfication: ['杂谈','Scss','js'],
 	    			iconClass: 'icon-fenleigongnengleimu'
 	    		},
 	    		{
@@ -65,6 +64,9 @@ export default {
   	methods: {
   		selectTag (tag) {
 	      	this.$store.dispatch('selectTag', tag)
+	      	if(this.$store.state.backUrl){
+	      		this.$router.push('/Blog');
+	      	}
 	    }
   	}
 }

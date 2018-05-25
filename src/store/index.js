@@ -9,7 +9,7 @@ const store = new Vuex.Store({
 		showArticles: [],
 		tags: [],
 		selectedTag: [],
-		backUrl: 'javascript:void(0)'
+		backUrl: false
 	},
 	mutations: {
 		getAllArticles (state,allArticles) {
@@ -25,7 +25,7 @@ const store = new Vuex.Store({
 			state.selectedTag = selectedTag;
 		},
 		clickDetial (state) {
-			state.backUrl = '/Blog';
+			state.backUrl = 'true';
 		}
 	},
 	actions: {
@@ -42,7 +42,6 @@ const store = new Vuex.Store({
 
 				}
 			})
-			console.log(123)
 			commit('getAllArticles', articlesArr)
       		commit('getShowArticles', articlesArr)
       		const tagsSet = new Set()
